@@ -14,6 +14,11 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', validateActionId, (req, res) => {
+    //returns action
+    res.status(200).json(req.action);
+});
+
 function validateActionId(req, res, next) {
     database.get(req.params.id).then(action => {
         if (!action) {
