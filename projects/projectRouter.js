@@ -102,4 +102,4 @@ function validateAction(req, res, next) {
     }
 }
 
-module.exports = router;
+module.exports = {router, validateAction};
