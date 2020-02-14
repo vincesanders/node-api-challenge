@@ -17,6 +17,14 @@ router.get('/:id', validateProjectId, (req, res) => {
     res.status(200).json(req.project);
 });
 
+router.get('/:id/actions', validateProjectId, (req, res) => {
+    database.getProjectActions(req.params.id).then(actions => {
+        res.status(200).json(actions);
+    }).catch(err => {
+        errorHandler(err, 500, "The projects's actions could not be retrieved");
+    });
+});
+
 function validateProjectId(req, res, next) {
     database.get(req.params.id).then(project => {
         if (!project) {
