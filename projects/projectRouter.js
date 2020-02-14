@@ -56,6 +56,19 @@ router.delete('/:id', validateProjectId, (req, res) => {
     });
 });
 
+router.put('/:id', validateProject, validateProjectId, (req, res) => {
+    database.update(req.params.id, req.body).then(changedProject => {
+        //returns changed project or null if not found
+        if (!changedProject) {
+            res.status(400).json({ message: "invalid project id" });
+        } else {
+            res.status(200).json(changedProject);
+        }
+    }).catch(err => {
+        errorHandler(err, 500, "The project information could not be modified.");
+    });
+});
+
 function validateProjectId(req, res, next) {
     database.get(req.params.id).then(project => {
         if (!project) {
