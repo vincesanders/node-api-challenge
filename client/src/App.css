@@ -1,7 +1,26 @@
 .App {
   text-align: center;
+  margin-top: 100px;
+}
+
+.App div {
+  margin-top: 50px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 100px;
+}
+
+.App button {
+  font-size: 72px;
+  background-color: steelblue;
+  color: white;
+  width: 90px;
+  border-radius: 50%;
+  border-color: navy;
+}
+
+.App button:hover {
+  cursor: pointer;
+  color: steelblue;
+  background-color: white;
 }

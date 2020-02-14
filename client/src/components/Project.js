@@ -2,9 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ProjectContainer = styled.div`
-    width: 250px;
+    width: 400px;
     border: 2px solid steelblue;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    * {
+        width: 90%;
+    }
+    p {
+        text-align: left;
+    }
+    h4 {
+        text-align: left;
+        display: list-item;
+        list-style-type: disc;
+        list-style-position: inside;
+    }
 `
 
 export default ({ project }) => {
@@ -20,7 +35,7 @@ export default ({ project }) => {
                         <p>notes:<br />{action.notes}</p>
                     </div>
                 );
-            }) : (<div><p>No action yet taken.</p></div>)}
+            }) : <div><p>No action yet taken.</p></div>}
         </ProjectContainer>
     );
 }

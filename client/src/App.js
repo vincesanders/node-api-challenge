@@ -28,7 +28,7 @@ function App() {
         fetchedProjects.forEach(project => {
           if (action.project_id === project.id) {
             if (!project.actions) {
-              project.actions = [];
+              project.actions = [action];
             }
             project = {
               ...project,
@@ -54,9 +54,12 @@ function App() {
 
   return (
     <div className="App">
-      {projects.length > 0 ?
-      projects.map( project => (<Project key={project.id} project={project} />)) :
-      (<div><h2>Loading projects...</h2></div>)}
+      <button>+</button>
+      <div>
+        {projects.length > 0 ?
+        projects.map( project => (<Project key={project.id} project={project} />)) :
+        (<div><h2>Loading projects...</h2></div>)}
+      </div>
     </div>
   );
 }
