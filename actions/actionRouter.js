@@ -19,6 +19,14 @@ router.get('/:id', validateActionId, (req, res) => {
     res.status(200).json(req.action);
 });
 
+router.delete('/:id', validateActionId, (req, res) => {
+    database.remove(req.params.id).then(numDeleted => {
+        res.status(200).json(req.action);
+    }).catch(err => {
+        errorHandler(err, 500, "The action could not be removed");
+    });
+});
+
 function validateActionId(req, res, next) {
     database.get(req.params.id).then(action => {
         if (!action) {
