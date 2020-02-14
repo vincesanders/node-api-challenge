@@ -2,7 +2,7 @@ const express = require('express');
 const database = require('../data/helpers/actionModel');
 
 const errorHandler = require('../utils/errorHandler');
-const { validatePost } = require('../projects/projectRouter');
+const { validateAction } = require('../projects/projectRouter');
 
 const router = express.Router();
 
@@ -24,6 +24,19 @@ router.delete('/:id', validateActionId, (req, res) => {
         res.status(200).json(req.action);
     }).catch(err => {
         errorHandler(err, 500, "The action could not be removed");
+    });
+});
+
+router.put('/:id', validateAction, validateActionId, (req, res) => {
+    database.update(req.params.id, req.body).then(changedAction => {
+        //returns changed action or null if not found
+        if (!changedAction) {
+            res.status(400).json({ message: "invalid action id" });
+        } else {
+            res.status(200).json(changedAction);
+        }
+    }).catch(err => {
+        errorHandler(err, 500, "The action information could not be modified.");
     });
 });
 
