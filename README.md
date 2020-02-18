@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+        There are a lot of benefits to using Express. It makes writing web apps and servers easier. It makes routing easy. Using routing, we can decide which request handler function is executed based on the url. Express also makes middleware functions easy, allowing us to get, modify or operate on the request and response objects. It makes error handling much cleaner.
+
 - [ ] Describe Middleware?
+
+        Middleware is essentialy a function or array of functions that are called after the initial call and before the response. In a line of functions that run one after the other, middleware is the one that runs after the first and before the last. It's not just a clever name.
 
 - [ ] Describe a Resource?
 
+        Everything is a resource in RESTful web APIs. I think of it as whatever you're querying the API to get or modify.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+        The API can return a response with a status code.
+
 - [ ] How can we partition our application into sub-applications?
+
+        Using routing. Express Router allow us to make our code more modular and easier to maintain.
 
 ## Minimum Viable Product
 
